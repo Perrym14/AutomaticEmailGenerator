@@ -5,7 +5,8 @@ public class Email {
     private String lastName;
     private String department;
     private String password;
-    private int mailboxCapacity;
+    private String email;
+    private int mailboxCapacity = 500;
     private String alternateEmail;
 
     public Email(String firstName, String lastName){
@@ -18,9 +19,14 @@ public class Email {
         this.department = SetDepartment();
         System.out.println(this.department);
 
+        //Call method that generates email.
+        email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department +".company.com";
+        System.out.println("Email address: "+email);
+
         //Call method that returns random password
         this.password = randomPassword(10);
-        System.out.println(this.password);
+        System.out.println("Password: " + this.password);
+
     }
 
     private String SetDepartment(){
@@ -43,5 +49,21 @@ public class Email {
         }
         return new String(password);
     }
+
+    public void SetMailboxCapacity(int limit){
+        this.mailboxCapacity =limit;
+    }
+
+    public void SetAlternateEmail(String altEmail){
+        this.alternateEmail = altEmail;
+    }
+
+    public void ChangePassword(String password){
+        this.password = password;
+    }
+
+    public int getMailboxCapacity() {return mailboxCapacity;}
+    public String getAlternateEmail() {return alternateEmail;}
+    public String getPassword() {return password;}
 
 }
